@@ -1,0 +1,67 @@
+#ifndef CONSTANTES_H
+#define CONSTANTES_H
+
+
+/*Fichiers contenant les constantes utilisées dans le programme*/
+#define SCREEN_WIDTH  720
+#define SCREEN_HEIGHT 540
+#define SPRITE_SIZE     32
+#define SPRITE_HEIGHT 45*157 /*La hauteur de notre sprite (ici; le lanceur)*/
+#define MIDDLE_HEIGHT_ARROW SPRITE_HEIGHT/2 /*Le milieux de notre sprite 5le lanceur), qui equivaut a son milieu d'animation*/
+#define BUBBLE_SPRITE_HEIGHT 960
+#define PI 3.14159265359 /*la precision est relative mais devrais suffire au projet*/
+#define MUR_GAUCHE 200.  /*le mur gauche de notre ecran */
+#define MUR_DROIT 520. /*le mur droit de notre ecran*/
+#define PLAFOND 31. /*le plafond de notre ecran*/
+#define CENTRE_LANCEUR_X (SCREEN_WIDTH/2)-20 /*le centre de l'ecran pour la bulle du lanceur -abcisse-*/
+#define CENTRE_LANCEUR_Y 459 /*le centre de l'ecran pour la bulle du lanceur -ordonnée-*/
+#define BUB_NX 9             /*bulle max a l'horizontale*/
+#define BUB_NY 11            /*bulle max a la verticale*/
+#define BUB_SIZE 40 /*taille des bulle*/
+#define NB_BULLE 90 /*nombre max de bulle*/
+
+
+
+
+
+
+
+
+
+
+/*variables globale*/
+
+SDL_Surface *temp, *sprite, *grass;
+SDL_Rect rcGrass;
+
+
+SDL_Rect Tableau_Bulles_Lancees[90];
+int nombre_bulle_lancees;
+int longueur;
+int compteur;
+int gameover;
+int Temps_animation, Temps_etat;
+float Mouvement_x;
+SDL_Surface *bubble_blue;
+int angle_lanceur,angle_lanceur2, rotation_angle; /*l'angle du lanceur est la position du lanceur au moment t et est comprise entre [-22,22]*/
+/*rotation_angle gere l'incrementation de angle_lanceur a chaque mouvement et est toujours de 1 mais par soucis de lisibilité je prefere passer par une variable*/
+
+float directionx, directiony; /*les direction horizontale et verticale de notre bulle calculée par les fonctions éponymes*/
+
+int mouvement; /*booléen, prenant soit 0 soit 1, et gere si la bulle rencontre un obstacle (mur, autre bulle) ou non*/
+
+/* source and destination rectangles */
+SDL_Rect rcSrc, rcSprite;
+SDL_Surface *screen;
+
+/* Rectangle source et destination pour les sprite de nos bulles*/
+SDL_Rect rcSrc_Blue, rcSprite_Blue;
+
+
+/*tableau d'entier bulle*/
+int bub_array[BUB_NY][BUB_NX];
+SDL_Rect nb_bulle[NB_BULLE];
+
+
+
+#endif

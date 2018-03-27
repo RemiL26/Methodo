@@ -1,0 +1,68 @@
+/*******************************/
+/*                             */
+/*                             */
+/*                             */
+
+/*******************************/
+/*        Librairies           */
+/*******************************/
+
+#include "SDL.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#include "Tableau_de_Bulles.h"
+
+/**/
+/**/
+/*Constructeurs*/
+
+Tab_B nouveau_Tableau_vide(void)
+{
+  return NULL;
+}
+
+
+/*fonction creant un tableau en ajoutant un SDL_rect a un tableau existant deja*/
+
+Tab_B Ajouter_Bulle_Tableau(SDL_Rect Bulle, Tab_B Tableau_de_Bulles)
+{
+  Tab_B nouvelle;
+  nouvelle = nouveau_Tableau_vide;
+
+  /*on alloue de la memoire pour la nouvelle Bulle*/
+  nouvelle = (Tab_B)malloc(sizeof(struct Tableau_Bulles));
+  nouvelle->prem = Bulle;
+  nouvelle->reste = Tableau_de_Bulles;
+  return nouvelle;
+}
+
+bool Est_vide_Tableau(Tab_B Tableau_de_Bulles) /*fonction verifiant si un tableau est vide ou non*/
+{
+  return(Tableau_de_Bulles == NULL);
+}
+
+SDL_Rect Premiere_Bulle(Tab_B Tableau_de_Bulles) /*fonction donnant la premiere Bulle du tableau*/
+{
+  return Tableau_de_Bulles->prem;
+}
+
+Tab_B Reste_Tableau(Tab_B Tableau_de_Bulles) /*fonction donnant le reste d'un tableau */
+{
+  return Tableau_de_Bulles->reste;
+}
+
+Tab_B retirer_Bulle(Tab_B Tableau_de_Bulles)
+{
+  Tab_B nouvelle;
+  nouvelle = Reste_Tableau(Tableau_de_bulles);
+  return nouvelle;
+}
+
+Tab_B Copier_Tableau(Tab_B Tableau_de_Bulles)
+{
+  Tab_B nouvelle;
+  nouvelle = Ajouter_Bulle_Tableau(Premiere_Bulle(Tableau_de_Bulles),Reste_Tableau(Tableau_de_Bulles));
+  return nouvelle;
+}
